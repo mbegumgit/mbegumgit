@@ -1,0 +1,27 @@
+{% extends 'Bee/base.html' %}
+
+{% block title %}BeeWord{% endblock%}
+
+{% block body %}
+    <h2>Spell Bee Word </h2>
+    
+    <ul>
+        <li>Difficulty Level : {{ spellbee.level }}</li>
+        <li>BeeWord : {{ spellbee.word }} {% if chk  %} ==> correct{% else %} ==> Incorrect{% endif %} </li>
+        
+    </ul>
+    
+    <form action="{% url 'beeword' spellbee.id  %}" method="post">
+    {% csrf_token %}
+    <label for="Word">Bee Word Spell Check- Retest: </label>
+    <input type="text" name="word" placeholder="Enter Bee_word spelling Here">
+    <button type="submit" name="submit_check" value="submit_check">Try again</button>
+
+
+    </form>
+    <p>*****************************************</p>
+
+    <a href="{% url 'index' %}">Practice - Test</a>
+    <p></p>
+    <a href="{% url 'home' %}">Go back HOME</a>
+{% endblock%}

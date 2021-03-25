@@ -1,0 +1,38 @@
+
+{% extends 'Bee/base.html' %}
+{% load static  %}
+{
+{% block title %}BeeWord Score Table{% endblock%}
+
+
+{% block static %}
+<link rel="stylesheet" href="{% static 'stylebee.css' %}">
+{% endblock %}
+
+
+
+{% block body %}
+<table>
+    <thead>
+        <th>Index</th>
+        <th>Bee Word</th>
+        <th>No of times attempted</th>
+        <th>Last Score</th>
+        <th>Total Pass Score</th>
+        <th>Total Fail Score</th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{ score_tb.id }}</td>
+            <td>{{ score_tb.pickword }}</td>
+            <td>{{score_tb.pickidx }}</td>
+            <td>{{score_tb.lastscore }}</td>
+            <td>{{score_tb.scoreboard_pass }}</td>
+            <td>{{score_tb.scoreboard_fail }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<a href="{% url 'index' %}">Go to Home Page</a>
+
+{% endblock%}

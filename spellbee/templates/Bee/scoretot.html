@@ -1,0 +1,23 @@
+{% extends 'Bee/base.html' %}
+
+{% block title %}BeeWord Score{% endblock%}
+
+{% block body %}
+    <h2>BeeWord-Score Board </h2>
+    
+    
+    <form action="{% url 'scoretot'  %}" method="post">
+    {% csrf_token %}
+    
+    <input type="text" name="word" placeholder="Enter Bee_word to get score">
+    <button type="submit" name="submit" value="submit">Score value</button>
+
+
+    </form>
+    <p></p>
+    <a href="{% url 'scoreboard' %}">Overall Score</a>
+    <p></p>
+    <a href="{% url 'index' %}">Practice - Test</a>
+    <p></p>
+    <a href="{% url 'home' %}">Go back HOME</a>
+{% endblock%}

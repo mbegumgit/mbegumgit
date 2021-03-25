@@ -1,0 +1,22 @@
+{% extends 'Bee/base.html' %}
+
+{% block title %}BeeWord{% endblock%}
+
+{% block body %}
+    <h1>Bee Word Test</h1>
+    <br />
+    <form action="{% url 'index' %}" method="post">
+      {% csrf_token %}
+      <label for="Level">Select  the Difficulty Level of Bee Word: </label>
+      <select name="level">
+        <option value="">--Make a choice--</option>
+        <option value="ONE">ONE</option>
+        <option value="TWO">TWO</option>
+        <option value="THREE">THREE</option>
+      </select>
+      <button type="submit" name="submit_pick" value="submit_pick">Pick word</button>
+      <p> </p>
+      
+      </form>
+
+{% endblock%}
