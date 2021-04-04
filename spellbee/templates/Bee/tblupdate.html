@@ -1,0 +1,14 @@
+{% extends 'Bee/base.html' %}
+
+{% block title %}Home{% endblock%}
+
+{% block body %}
+    <h1>Updating Database !</h1>
+    <a href="{% url 'index' %}">PRACTICE</a>
+    <p> </p>
+    <a href="{% url 'scoretot' %}">TEST-SCORE</a> 
+    <br>
+      <p>{{ err }} </p>
+      
+
+{% endblock%}
