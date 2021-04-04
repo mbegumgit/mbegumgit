@@ -1,0 +1,22 @@
+{% extends 'Bee/base.html' %}
+
+{% block title %}BeeWord{% endblock%}
+
+{% block body %}
+    <h2>Spell Bee Word </h2>
+    <h3>Difficulty Level </h2>
+    {% for beeword_lvl_val  in beeword_lvl  %}
+    <ul>
+        <li> {{ beeword_lvl_val.level }}</li>
+        
+        
+    </ul>
+    {% endfor %}
+   
+   
+    <p>*****************************************</p>
+
+    <a href="{% url 'index' %}">Practice - Test</a>
+    <p></p>
+    <a href="{% url 'home' %}">Go back HOME</a>
+{% endblock%}
