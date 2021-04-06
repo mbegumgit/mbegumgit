@@ -19,7 +19,6 @@ psycopg2==2.8.6
 pypiwin32==223
 pyttsx3==2.90
 pytz==2021.1
-pywin32==300
 requests==2.25.1
 scikit-learn==0.24.1
 scipy==1.6.2
