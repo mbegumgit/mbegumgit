@@ -27,12 +27,12 @@ if os.path.isfile(dotenv_file):
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '7a-r#hx)o)*998zcg*1mym(2gh7+9qfvk4pmw(n_!0+5#qg$+q'
-#SECRET_KEY = os.environ.get('SECRET_KEY')
+#SECRET_KEY = '7a-r#hx)o)*998zcg*1mym(2gh7+9qfvk4pmw(n_!0+5#qg$+q'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-#DEBUG = (os.environ.get('DEBUG_VALUE') == 'True')
-DEBUG=True
+DEBUG = (os.environ.get('DEBUG_VALUE') == 'True')
+#DEBUG=True
 ALLOWED_HOSTS = ['spellbeeword.herokuapp.com']
 
 
@@ -130,7 +130,12 @@ USE_TZ = True
 
  
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# If STATIC DIR is empty , it will create temporay file
+STATIC_TMP = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
+os.makedirs(STATIC_TMP, exist_ok=True)
+os.makedirs(STATIC_ROOT, exist_ok=True)
+
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
