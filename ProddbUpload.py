@@ -30,7 +30,8 @@ def main():
         print(error)
     finally:
         if conn:
-            conn.close()\
-if __name__ == "__main__":
+            conn.close()
+
+if __name__ == "__main__" :
     main()
         
