@@ -12,7 +12,7 @@ def writedb(conn):
     cur.execute('SELECT * FROM Spellbeeword_tb')
     first= cur.fetchone()
 
-    print('first row:' first)
+    print('first row:', first)
     try:
         with  open("spellbee/docs/Spell_Bee_Word_db.csv", 'r') as f:
             cur.copy_from(f,'Spellbeeword_tb',sep=',')
