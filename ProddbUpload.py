@@ -6,8 +6,9 @@ def writedb(conn):
     print("Started opening file to copy into table")
 
     try:
-        with  open("spellbee/docs/Spell_Bee_Word_db.csv", 'r') as f:
-            cur.copy_from(f,'spellbeeword_tb',sep=",")
+        with  open("spellbee/docs/Spell_Bee_Word_db.csv", 'r', encoding="utf-8") as f:
+            sql_copy= "COPY spellbeeword_tb  FROM stdin (FORMAT CSV)"
+            cur.copy_expert(sql=sql_copy,file=f)
             print('successfully copied files into db')
             # commit changes
             conn.commit()
