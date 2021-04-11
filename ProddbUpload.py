@@ -14,15 +14,15 @@ def writedb(conn):
     for tb in first:
         
         print('table row:',tb)
-        
-    cur.execute('SELECT * FROM Spellbeeword_tb;')
+
+    cur.execute('SELECT * FROM "Spellbeeword_tb";')
     first= cur.fetchone()
 
     print('first row:', first)
 
     try:
         with  open("spellbee/docs/Spell_Bee_Word_db.csv", 'r') as f:
-            cur.copy_from(f,'Spellbeeword_tb',sep=',')
+            cur.copy_from(f,"Spellbeeword_tb",sep=',')
             # commit changes
             conn.commit()
     
