@@ -3,20 +3,18 @@ import psycopg2
 
 def writedb(conn):
     cur = conn.cursor()
-    
-    cur.execute('SELECT * FROM "Spellbeeword_tb";')
-    first= cur.fetchone()
-
-    print('first row:', first)
+    print("Started opening file to copy into table")
 
     try:
         with  open("spellbee/docs/Spell_Bee_Word_db.csv", 'r') as f:
-            cur.copy_from(f,'Spellbeeword_tb',sep=',')
+            cur.copy_from(f,'spellbeeword_tb',sep=",")
+            print('successfully copied files into db')
             # commit changes
             conn.commit()
+            print("Committed changes")
     
     except Exception as error:
-        print(error)
+        print('Error in copying db ',error)
     finally:
         if conn:
             conn.close()
