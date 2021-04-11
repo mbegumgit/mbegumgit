@@ -26,7 +26,7 @@ def index(request):
 
 def beeword(request, beeword_key):
     if request.method == 'POST':
-        word_typed = request.POST["word"].lower()
+        word_typed = request.POST["word"]
         spellbee = get_beeword(beeword_key)
         chk=beewordpick.CheckWord(spellbee.word,word_typed)
         temp =0
@@ -89,7 +89,7 @@ def scoretot(request):
 
     if request.method == 'POST':
         bee_key =0
-        inp_word = request.POST["word"].lower()
+        inp_word = request.POST["word"]
         try:
             bee_key = BeeWord.objects.get(word=inp_word)
         except Exception as err:
@@ -133,7 +133,7 @@ def score_calc(df_level):
         pass_agg += score_data.scoreboard
         total_test += score_data.pickidx
     if total_test > 0:
-        percent = int((pass_agg/total_test)*100)
+        percent = (pass_agg/total_test)*100
     else:
         percent = 0
     if percent > 75:

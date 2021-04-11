@@ -1,0 +1,47 @@
+<div class="list-group">
+    <a href="#" class="list-group-item list-group-item-action active">
+      Cras justo odio
+    </a>
+    <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
+    <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
+    <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
+    <a href="#" class="list-group-item list-group-item-action disabled">Vestibulum at eros</a>
+  </div>
+
+  <form class="form-inline">
+    <div class="form-group mb-2">
+      <label for="staticEmail2" class="sr-only">Email</label>
+      <input type="text" readonly class="form-control-plaintext" id="staticEmail2" value="email@example.com">
+    </div>
+    <div class="form-group mx-sm-3 mb-2">
+      <label for="inputPassword2" class="sr-only">Password</label>
+      <input type="password" class="form-control" id="inputPassword2" placeholder="Password">
+    </div>
+    <button type="submit" class="btn btn-primary mb-2">Confirm identity</button>
+  </form>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm">
+        One of three columns
+      </div>
+      <div class="col-sm">
+        One of three columns
+      </div>
+      <div class="col-sm">
+        One of three columns
+      </div>
+    </div>
+  </div>
+
+  
+  <form action="{% url 'beeword' spellbee.id  %}" method="post">
+    {% csrf_token %}
+    <label for="Word">Word picked: ***** </label>
+    <input type="text" name="word" placeholder="Enter Bee_word spelling Here">
+    <button type="submit" name="submit_check" value="submit_check">Check word</button>
+
+
+    </form>
+    {% with no=0 %}
+            {% endwith %}

@@ -3,25 +3,28 @@
 {% block title %}BeeWord{% endblock%}
 
 {% block body %}
-    <h2>Spell Bee Word </h2>
+    <h5> Bee Word Validation</h5>
     
     <ul>
         <li>Difficulty Level : {{ spellbee.level }}</li>
         <li>BeeWord : {{ spellbee.word }} {% if chk  %} ==> correct{% else %} ==> Incorrect{% endif %} </li>
         
     </ul>
-    
-    <form action="{% url 'beeword' spellbee.id  %}" method="post">
-    {% csrf_token %}
-    <label for="Word">Bee Word Spell Check- Retest: </label>
-    <input type="text" name="word" placeholder="Enter Bee_word spelling Here">
-    <button type="submit" name="submit_check" value="submit_check">Try again</button>
-
-
-    </form>
-    <p>*****************************************</p>
-
-    <a href="{% url 'index' %}">Practice - Test</a>
+    <div class="row">
+        <div class="col">
+    <form class="form-inline" action="{% url 'beeword' spellbee.id  %}" method="post">
+        {% csrf_token %}
+        <div class="form-group mx-sm-3 mb-2">
+            <label for="Word" class="sr-only">Bee Word Spell Check- Retest: </label>
+            <input type="text" class="form-control" name="word" placeholder="Enter Bee_word spelling Here">
+            <button type="submit" class="btn btn-primary mb-2" name="submit_check" value="submit_check">Try again</button>
+        </div>
+       </div>
+    </div>
     <p></p>
-    <a href="{% url 'home' %}">Go back HOME</a>
+    <div class="list-group">
+        <a href="{% url 'index' %}" class="list-group-item list-group-item-action active">  Practice test  </a>
+    </div>
+   
+    
 {% endblock%}

@@ -3,7 +3,7 @@
 {% block title %}BeeWord{% endblock%}
 
 {% block body %}
-    <h1>Bee Word Test</h1>
+    <h5>Bee Word Test</h5>
     <br>
     <form action="{% url 'index' %}" method="post">
       {% csrf_token %}
@@ -18,5 +18,5 @@
       <p> </p>
       
       </form><br>
-      <a href="{% url 'home' %}">Go to Home Page</a>
+      
 {% endblock%}

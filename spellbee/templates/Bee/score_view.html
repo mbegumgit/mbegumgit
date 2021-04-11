@@ -1,24 +1,22 @@
 
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <title>SpellBeeWord</title>
-        <link rel="stylesheet" type="text/css"  href="{% static 'stylebee.css' %}">
-    </head>
-<body>
-    <table>
+{% extends 'Bee/base.html' %}
+
+{% block title %}BeeWord{% endblock%}
+
+{% block body %}
+    <table class="table table-bordered">
         <thead>
-            <th>Index</th>
-            <th>Bee Word</th>
-            <th>No of times attempted</th>
-            <th>Last Score</th>
-            <th>Total  Score</th>
-            
+            <tr>
+            <th scope="col">Index</th>
+            <th scope="col">Bee Word</th>
+            <th scope="col">No of times attempted</th>
+            <th scope="col">Last Score</th>
+            <th scope="col">Total  Score</th>
+        </tr>
         </thead>
         <tbody>
             <tr>
-                <td>{{ score_tb.id }}</td>
+                <th scope="row">{{ score_tb.id }}</td>
                 <td>{{ score_tb.pickword }}</td>
                 <td>{{score_tb.pickidx }}</td>
                 <td>{{score_tb.lastscore }}</td>
@@ -27,7 +25,5 @@
             </tr>
         </tbody>
     </table>
-    <p></p>
-    <a href="{% url 'home' %}">Go to Home Page</a>
-</body>
-</html>
+   
+{% endblock%}

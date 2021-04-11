@@ -1,22 +1,27 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <title>Score Board</title>
-        <link rel="stylesheet" type="text/css"  href="{% static 'stylebee.css' %}">
-    </head>
-<body>
-    <table>
+{% extends 'Bee/base.html' %}
+
+{% block title %}BeeWord{% endblock%}
+
+{% block body %}
+    <h5>Bee Word  Score check</h5>
+    <br> <br>
+
+    <table class="table table-bordered">
         <thead>
-            <th>Bee Word Level</th>
-            <th>Total tests taken</th>
-            <th>Overall Percentage</th>
-            <th>Overall Status</th>
+            <tr>
+             
+            <th scope="col">Bee Word Level</th>
+            <th scope="col">Total tests taken</th>
+            <th scope="col">Overall Percentage</th>
+            <th scope="col">Overall Status</th>
+        </tr>
         </thead>
         <tbody>
+            
             {% for score_val  in score_bd  %}
             <tr>
-                <td>{{ score_val.lvl }}</td>
+                
+                <th scope="row">{{ score_val.lvl }}</td>
                 <td>{{ score_val.test }}</td>
                 <td>{{ score_val.percent }}</td>
                 <td>{{ score_val.stat }}</td>
@@ -24,7 +29,5 @@
             {% endfor %}
         </tbody>
     </table>
-    <p></p>
-    <a href="{% url 'home' %}">Go to Home Page</a>
-</body>
-</html>
+   
+{% endblock%}
