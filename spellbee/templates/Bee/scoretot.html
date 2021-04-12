@@ -3,7 +3,7 @@
 {% block title %}BeeWord Score{% endblock%}
 
 {% block body %}
-    <h2>BeeWord-Score Board </h2>
+    <h5>BeeWord-Score Board </h5>
     
     
     <form action="{% url 'scoretot'  %}" method="post">
@@ -15,9 +15,11 @@
 
     </form>
     <p></p>
-    <a href="{% url 'scoreboard' %}">Overall Score</a>
-    <p></p>
-    <a href="{% url 'index' %}">Practice - Test</a>
-    <p></p>
-    <a href="{% url 'home' %}">Go back HOME</a>
+    <div class="list-group">
+        <a href="{% url 'scoreboard' %}" class="list-group-item list-group-item-action active">
+            Overall Score</a>
+            <a href="{% url 'index' %}" class="list-group-item list-group-item-action ">
+                Practice - Test</a>
+    </div>
+    
 {% endblock%}
