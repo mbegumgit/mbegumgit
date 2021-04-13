@@ -1,7 +1,7 @@
 # Importing Libraries
 
 
-from . import pyttsx3
+import pyttsx3
 
 def Init():
     engine = pyttsx3.init() # object creation

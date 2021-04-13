@@ -3,20 +3,14 @@
 {% block title %}BeeWord{% endblock%}
 
 {% block body %}
-    <h2>Spell Bee Word </h2>
-    <h3>Difficulty Level </h2>
+    
+    <h5>Difficulty Level </h5>
     {% for beeword_lvl_val  in beeword_lvl  %}
-    <ul>
-        <li> {{ beeword_lvl_val.level }}</li>
-        
+    <ul class="list-group"> 
+        <li class="list-group-item list-group-item-light"> {{ beeword_lvl_val.level }}</li>
+    </div>
         
     </ul>
     {% endfor %}
    
-   
-    <p>*****************************************</p>
-
-    <a href="{% url 'index' %}">Practice - Test</a>
-    <p></p>
-    <a href="{% url 'home' %}">Go back HOME</a>
 {% endblock%}
