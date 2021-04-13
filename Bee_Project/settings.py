@@ -13,7 +13,7 @@ import os
 import django_heroku
 from pathlib import Path
 import dj_database_url
-import dj_database_url
+
 import dotenv
 import pyttsx3
 
@@ -38,6 +38,7 @@ ALLOWED_HOSTS = ['spellbeeword.herokuapp.com']
 # Application definition
 
 INSTALLED_APPS = [
+    
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
