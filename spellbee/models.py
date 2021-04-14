@@ -1,11 +1,12 @@
 from django.db import models
+#from django.contrib.auth.models import User
 
 # Create your models here.
 class BeeWord(models.Model):
     level = models.CharField(max_length=10)
     word = models.CharField(max_length=90, unique=True, null=True)
     class Meta:
-        db_table = 'Spellbeeword_tb'       
+        db_table = 'spellbeeword_tb'       
         managed = True
     
 
@@ -23,17 +24,18 @@ class CustomBooleanField(models.BooleanField):
         return int(value) # return 0/1
 
 class Score(models.Model):
-    pickword = models.ForeignKey(BeeWord,unique=True, on_delete=models.CASCADE, related_name="wordscore")
+    pickword = models.ForeignKey(BeeWord, on_delete=models.CASCADE, related_name="wordscore")
     pickidx = models.IntegerField(default=0)
     lastscore = models.BooleanField(default=False)
     scoreboard  = models.IntegerField(default=0)
     
+    
 
     class Meta:
-        db_table = 'Spellbeeword_Score_tb'       
+        db_table = 'spellbeeword_score_tb'       
         managed = True
     def __str__(self):
-        score_string = f"Index -{self.id}: {self.pickword} -- Lastscore is {self.lastscore} & attempted {self.pickidx} times"
+        score_string = f"Index -{self.id}  {self.pickword} -- Lastscore is {self.lastscore} & attempted {self.pickidx} times"
         return score_string
 
 class YearList(models.Model):
