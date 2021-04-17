@@ -11,28 +11,36 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <link  rel="stylesheet" type="text/css" href="{% static 'main.css' %}">
-    
-    
-    <title>Spell Bee Word</title>
+    {% if title %}
+        <title>Spell Bee Word - {{ title }}</title>
+    {% else %}
+        <title>Spell Bee Word</title>
+    {% endif %}
     
    </head>
     <body>
         <header class="site-header">
             <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
               <div class="container">
-                <a class="navbar-brand mr-4" href="/">Welcome to Spelling  Bee Word !</a>
+                <a class="navbar-brand mr-4" href="#">Welcome to Spelling  Bee Word !</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarToggle">
                   <div class="navbar-nav mr-auto">
-                    <a class="nav-item nav-link" href="/">Home</a>
-                    <a class="nav-item nav-link" href="level">About</a>
+                    {% if user.is_authenticated %}
+                    <a class="nav-item nav-link" href="{% url 'home' %}">Home</a>
+                    <a class="nav-item nav-link" href="{% url 'read' %}">About</a>
                   </div>
                   <!-- Navbar Right Side -->
                   <div class="navbar-nav">
-                    <a class="nav-item nav-link" href="/admin">Login</a>
-                    <a class="nav-item nav-link" href="#">Register</a>
+                    
+                
+                <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
+              {% else %}
+                <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
+                <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>
+              {% endif %}
                   </div>
                 </div>
               </div>
@@ -41,6 +49,13 @@
         <main role="main" class="container">
             <div class="row">
               <div class="col-12 col-md-8">
+                {% if messages %}
+                {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+                 </div>
+                {% endfor %}
+                {% endif %}
                 {% block body %}{% endblock %}
               </div>
               <div class="col-6 col-md-4">

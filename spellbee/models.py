@@ -1,5 +1,5 @@
 from django.db import models
-#from django.contrib.auth.models import User
+from django.contrib.auth.models import User
 
 # Create your models here.
 class BeeWord(models.Model):
@@ -28,6 +28,7 @@ class Score(models.Model):
     pickidx = models.IntegerField(default=0)
     lastscore = models.BooleanField(default=False)
     scoreboard  = models.IntegerField(default=0)
+    student = models.ForeignKey(User, on_delete=models.CASCADE,null=True)
     
     
 
@@ -35,7 +36,7 @@ class Score(models.Model):
         db_table = 'spellbeeword_score_tb'       
         managed = True
     def __str__(self):
-        score_string = f"Index -{self.id}  {self.pickword} -- Lastscore is {self.lastscore} & attempted {self.pickidx} times"
+        score_string = f"Index -{self.id} User:{self.student.username} {self.pickword} -- Lastscore is {self.lastscore} & attempted {self.pickidx} times"
         return score_string
 
 class YearList(models.Model):

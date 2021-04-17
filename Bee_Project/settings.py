@@ -12,9 +12,9 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 import os
 import django_heroku
 from pathlib import Path
-import dj_database_url
-
-import dotenv
+#import dj_database_url
+ 
+#import dotenv  
 import pyttsx3
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'spellbee.apps.SpellbeeConfig',
+    'users.apps.UsersConfig',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -83,7 +85,7 @@ WSGI_APPLICATION = 'Bee_Project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 # Use below setting for Local database 'spellbee_test_db' and comment production one
-""" DATABASES = {
+DATABASES = {
    'default': {
        'ENGINE': 'django.db.backends.postgresql',
        'NAME': 'spellbee_test_db',
@@ -92,10 +94,10 @@ WSGI_APPLICATION = 'Bee_Project.wsgi.application'
        'HOST': 'localhost',
        'PORT': '',
    }
-} """
+}
 # Below Database setting is for production deployment
-DATABASES = {}
-DATABASES['default'] = dj_database_url.config(conn_max_age=600)
+# DATABASES = {}
+# DATABASES['default'] = dj_database_url.config(conn_max_age=600)
 
 
 
@@ -140,6 +142,13 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # If STATIC DIR is empty , it will create temporay file
 STATIC_TMP = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
+CRISPY_TEMPLATE_PACK ='bootstrap4'
+LOGIN_REDIRECT_URL = 'home'
+LOGIN_URL = 'login'
 os.makedirs(STATIC_TMP, exist_ok=True)
 os.makedirs(STATIC_ROOT, exist_ok=True)
 
