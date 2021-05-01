@@ -12,10 +12,14 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 import os
 import django_heroku
 from pathlib import Path
-#import dj_database_url
+import dj_database_url
  
-#import dotenv  
+
 import pyttsx3
+import dotenv # <- New
+
+
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,6 +29,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
+# Add .env variables anywhere before SECRET_KEY
+dotenv_file = os.path.join(BASE_DIR, ".env")
+if os.path.isfile(dotenv_file):
+    dotenv.load_dotenv(dotenv_file)
 # SECURITY WARNING: keep the secret key used in production secret!
 #SECRET_KEY = '7a-r#hx)o)*998zcg*1mym(2gh7+9qfvk4pmw(n_!0+5#qg$+q'
 SECRET_KEY = os.environ.get('SECRET_KEY')
@@ -85,19 +93,19 @@ WSGI_APPLICATION = 'Bee_Project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 # Use below setting for Local database 'spellbee_test_db' and comment production one
-DATABASES = {
-   'default': {
-       'ENGINE': 'django.db.backends.postgresql',
-       'NAME': 'spellbee_test_db',
-       'USER' : 'spellbee',
-       'PASSWORD': 'spellbee@123',
-       'HOST': 'localhost',
-       'PORT': '',
-   }
-}
+# DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.postgresql',
+#        'NAME': 'spellbee_test_db',
+#        'USER' : 'spellbee',
+#        'PASSWORD': 'spellbee@123',
+#        'HOST': 'localhost',
+#        'PORT': '',
+#    }
+# }
 # Below Database setting is for production deployment
-# DATABASES = {}
-# DATABASES['default'] = dj_database_url.config(conn_max_age=600)
+DATABASES = {}
+DATABASES['default'] = dj_database_url.config(conn_max_age=600)
 
 
 
